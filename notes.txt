@@ -1,0 +1,10 @@
+Tive que adicionar os parametros no docker composer file
+platform: linux/amd64
+
+Tive que agregar nossl ao dbeaver pra conectar
+
+Tive que fazer algumas configuracoes no MySQL
+mysql --user=user_name --password db_name
+
+ALTER USER 'secretario'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqlUsernamePassword';
+
