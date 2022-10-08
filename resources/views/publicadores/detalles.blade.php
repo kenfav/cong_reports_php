@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body><ul>
+Publicador {{$publicador -> nombre}}
     <li>
-{{id}}
+{{$publicador -> fecha_de_bautismo}}
+    </li>
+    <li>
+        {{$publicador -> fecha_nacimiento}}
     </li>
 </ul>
 </body>
