@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\{
-    PublicadorController
+  PublicadorController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/publicadores', [PublicadorController::class, 'index']) -> name('publicadores.index');
+Route::get('/publicadores', [PublicadorController::class, 'index'])->name('publicadores.index');
 
-Route::get('/publicadores/{id}', [PublicadorController::class, 'detalles']) -> name('publicadores.detalles');
+Route::get('/publicadores/create', [PublicadorController::class, 'create'])->name('publicadores.create');
 
+Route::get('/publicadores/{id}', [PublicadorController::class, 'detalles'])->name('publicadores.detalles');
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
-
