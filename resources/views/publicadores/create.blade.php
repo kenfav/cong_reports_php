@@ -3,7 +3,19 @@
 
 @section('content')
 <h1>Crear nuevo publicador:</h1>
-<form action="#" method="post">
+@if ($errors->any())
+<div class="alert alert-danger">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+<form action="{{route('publicadores.store')}}" method="POST">
+  @csrf
+
+
   <label for="nombreform"> Nombre del Publicador: </label>
   <input type="text" name="nombre" id="nombreform" placeholder="Digite el nombre:"><br>
 
@@ -43,3 +55,5 @@
 
   <input type="submit" value="Submit">
 </form>
+
+@endsection

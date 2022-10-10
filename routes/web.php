@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
   PublicadorController
 };
+use App\Models\Publicador;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/publicadores', [PublicadorController::class, 'index'])->name('publicadores.index');
 
 Route::get('/publicadores/create', [PublicadorController::class, 'create'])->name('publicadores.create');
+Route::post('/publicadores/create', [PublicadorController::class, 'store'])->name('publicadores.store');
 
 Route::get('/publicadores/{id}', [PublicadorController::class, 'detalles'])->name('publicadores.detalles');
 Route::get('/', function () {

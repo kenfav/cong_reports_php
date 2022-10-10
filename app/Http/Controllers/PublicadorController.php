@@ -22,8 +22,13 @@ class PublicadorController extends Controller
     return view('publicadores.detalles', ['publicador' => $publicador]);
   }
 
-  public function create()
+  public function create(Request $request)
   {
     return view('publicadores.create');
+  }
+  public function store(Request $request)
+  {
+    $input = $request->collect();
+    dd($input);
   }
 }
