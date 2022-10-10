@@ -2,7 +2,7 @@
 @section('title', 'Nuevo Publicador')
 
 @section('content')
-<h1>Crear nuevo publicador:</h1>
+<h1>Editar publicador: {{$publicador -> nombre}}</h1>
 @if ($errors->any())
 <div class="alert alert-danger">
   <ul>
@@ -12,25 +12,26 @@
   </ul>
 </div>
 @endif
-<form action="{{route('publicadores.store')}}" method="POST">
+<form action="{{route('publicadores.update', $publicador -> id)}}" method="POST">
   @csrf
+  @method('PUT')
 
 
   <label for="nombreform"> Nombre del Publicador: </label>
-  <input type="text" name="nombre" id="nombreform" placeholder="Digite el nombre:" value="{{old('nombre')}}"><br>
+  <input type="text" name="nombre" id="nombreform" placeholder="Digite el nombre:" value="{{$publicador -> nombre}}"><br>
 
   <label for="dateformibaut">Fecha de bautismo:</label>
-  <input type="date" name="fecha_de_bautismo" id="dateformibaut" placeholder="Fecha de bautismo:" value="{{old('fecha_de_bautismo')}}"><br>
+  <input type="date" name="fecha_de_bautismo" id="dateformibaut" placeholder="Fecha de bautismo:" value="{{$publicador -> fecha_de_bautismo }}"><br>
 
   <label for="dateformnac">Fecha de nacimiento:</label>
-  <input type="date" name="fecha_nacimiento" id="dateformibaut" placeholder="Fecha de nacimiento" value="{{old('fecha_nacimiento')}}"><br><br>
+  <input type="date" name="fecha_nacimiento" id="dateformibaut" placeholder="Fecha de nacimiento" value="{{$publicador -> fecha_nacimiento }}"><br><br>
 
   <label>Ungido o Otras ovejas</label><br>
   <label for="otrasovejas">Otras ovejas</label>
-  <input type="radio" id="otrasovejas" name="otras_ovejas" value="1">
+  <input type="radio" id="otrasovejas" name="otras_ovejas" value="{{$publicador -> otras_ovejas }}">
 
   <label for="ungido" name="ungido" value="Ungido">Ungido</label>
-  <input type="radio" id="ungido" name="otras_ovejas" value="0"><br><br>
+  <input type="radio" id="ungido" name="otras_ovejas" value="{{$publicador -> otras_ovejas }}"><br><br>
 
   <label>Anciano:</label><br>
   <label for="anc_si">Si</label>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdatePublicadorFormRequest;
 use App\Models\Publicador;
 use Illuminate\Http\Request;
 use PhpParser\Builder\Function_;
@@ -22,13 +23,28 @@ class PublicadorController extends Controller
     return view('publicadores.detalles', ['publicador' => $publicador]);
   }
 
-  public function create(Request $request)
+  public function edit($id)
+  {
+    if (!$publicador = Publicador::find($id))
+      return redirect()->route('publicadores.index');
+
+    return view('publicadores.edit', ['publicador' => $publicador]);
+  }
+
+  public function update($request)
+  {
+    $data = $request->only('nombre', 'fecha_de_bautismo', 'fecha_nacimiento', 'otras_ovejas', 'anciano', 'siervo_ministerial', 'precursor');
+    return redirect(route('publicadores.ndex'));
+  }
+
+  public function create()
   {
     return view('publicadores.create');
   }
-  public function store(Request $request)
+  public function store(StoreUpdatePublicadorFormRequest $request)
   {
-    $input = $request->collect();
-    dd($input);
+    $data = $request->only('nombre', 'fecha_de_bautismo', 'fecha_nacimiento', 'otras_ovejas', 'anciano', 'siervo_ministerial', 'precursor');
+    Publicador::create($data);
+    return redirect(route('publicadores.index'));
   }
 }

@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('title', 'Detalles del publicador')
-    
+
 @section('content')
 <ul>
-    Publicador {{$publicador -> nombre}}
-        <li>
-    {{$publicador -> fecha_de_bautismo}}
-        </li>
-        <li>
-            {{$publicador -> fecha_nacimiento}}
-        </li>
-    </ul
-@endsection
+  Publicador: {{$publicador -> nombre}}
+  <li>
+    Fecha de nacimiento: {{$publicador -> fecha_nacimiento}}
+  </li>
+  <li>
+    Fecha de bautismo: {{$publicador -> fecha_de_bautismo}}
+  </li>
+
+</ul @endsection
