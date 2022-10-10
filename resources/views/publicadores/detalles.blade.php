@@ -10,5 +10,10 @@
   <li>
     Fecha de bautismo: {{$publicador -> fecha_de_bautismo}}
   </li>
-
-</ul @endsection
+</ul>
+<form action="{{ route('publicadores.delete', $publicador -> id)}}" method="POST">
+  @csrf
+  @method('DELETE')
+  <button type="submit">Deletar</button>
+</form>
+@endsection

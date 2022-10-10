@@ -9,9 +9,11 @@ use PhpParser\Builder\Function_;
 
 class PublicadorController extends Controller
 {
-  public function index()
+
+  public function index(Request $request)
   {
-    $publicadores = Publicador::get();
+    $busqueda = $request->buscarpublicador;
+    $publicadores = Publicador::where('nombre', 'LIKE', "%{$busqueda}%")->get();
     return view('publicadores.index', compact('publicadores'));
   }
 
@@ -31,20 +33,32 @@ class PublicadorController extends Controller
     return view('publicadores.edit', ['publicador' => $publicador]);
   }
 
-  public function update($request)
+  public function update(StoreUpdatePublicadorFormRequest $request, $id)
   {
     $data = $request->only('nombre', 'fecha_de_bautismo', 'fecha_nacimiento', 'otras_ovejas', 'anciano', 'siervo_ministerial', 'precursor');
-    return redirect(route('publicadores.ndex'));
+    if (!$publicador = Publicador::find($id))
+      return redirect()->route('publicadores.index');
+    $publicador->update($data);
+    return redirect(route('publicadores.index'));
   }
 
   public function create()
   {
     return view('publicadores.create');
   }
+
   public function store(StoreUpdatePublicadorFormRequest $request)
   {
     $data = $request->only('nombre', 'fecha_de_bautismo', 'fecha_nacimiento', 'otras_ovejas', 'anciano', 'siervo_ministerial', 'precursor');
     Publicador::create($data);
     return redirect(route('publicadores.index'));
+  }
+
+  public function delete($id)
+  {
+    if (!$publicador = Publicador::find($id))
+      return redirect()->route('publicadores.index');
+    $publicador->delete();
+    return redirect()->route('publicadores.index');
   }
 }
