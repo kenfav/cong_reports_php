@@ -9,6 +9,12 @@ use PhpParser\Builder\Function_;
 
 class PublicadorController extends Controller
 {
+  protected $model;
+
+  public function __construct(Publicador $publicador)
+  {
+    $this->model = $publicador;
+  }
 
   public function index(Request $request)
   {

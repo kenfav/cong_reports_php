@@ -19,11 +19,20 @@
 </head>
 
 <body class="w3-light-grey">
-  <div class="container mx-auto px-20 py-8 font-semibold w3-padding-16">
+  <div class="container mx-auto px-20 py-8 font-semibold w3-padding-16" style="margin: auto;">
     @yield('content')
   </div>
   <br>
-  <p><a href="{{route('index')}}">Volver al inicio</a></p>
+  <div class="w3-container">
+
+  </div>
+  <div class="w3-container" style="max-width: 600px; margin: auto;">
+    <div class="w3-bar">
+      <a href="{{ URL::previous() }}"><button class="w3-bar-item w3-button w3-black w3-border" style="width:50%">Volver</button>
+      </a>
+      <a href="{{route('index')}}"><button class="w3-bar-item w3-button w3-black w3-border" style="width:50%">Inicio</button>
+    </div>
+  </div>
 </body>
 
 </html>

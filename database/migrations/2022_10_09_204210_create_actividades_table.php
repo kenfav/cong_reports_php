@@ -15,16 +15,16 @@ return new class extends Migration
   {
     Schema::create('actividades', function (Blueprint $table) {
       $table->id();
+      $table->integer('mes')->unsigned();
+      $table->integer('ano')->unsigned();
+      $table->integer('publicaciones')->unsigned()->nullable();
+      $table->integer('videos')->unsigned()->nullable();
+      $table->integer('horas')->unsigned();
+      $table->integer('revisitas')->unsigned()->nullable();
+      $table->integer('estudios')->unsigned()->nullable();
+      $table->string('notas')->nullable();
       $table->timestamps();
-      $table->foreignId('nombre')->constrained('publicadors');
-      $table->integer('mes');
-      $table->integer('ano');
-      $table->integer('publicaciones');
-      $table->integer('videos');
-      $table->integer('horas');
-      $table->integer('revisitas');
-      $table->integer('estudios');
-      $table->string('notas');
+      $table->foreignId('publicador_id')->references('id')->on('publicadors')->onDelete('cascade');
     });
   }
 
