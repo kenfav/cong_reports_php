@@ -30,12 +30,12 @@ services:
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks: 
             - laravel-9
-        platform: linux/amd64
+              #platform: linux/amd64
 
     # db mysql
     mysql:
         container_name: especializati-mysql
-        image: mysql:8.0.26
+        image: mysql:latest
         restart: unless-stopped
         environment: 
             MYSQL_DATABASE: ${DB_DATABASE}
@@ -43,12 +43,13 @@ services:
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_USER: ${DB_USERNAME}
         volumes: 
-            - ./.docker/mysql/dbdata:/var/lib/mysql
+            - ./.docker/mysql/dbdata:/var/lib/mysql:rw
+        user: mysql
         ports: 
             - "3388:3306"
         networks: 
             - laravel-9
-        platform: linux/amd64
+              #platform: linux/amd64
 
     # queue
     queue:
@@ -63,7 +64,7 @@ services:
             - app
         networks: 
             - laravel-9
-        platform: linux/amd64
+              #platform: linux/amd64
 
     # redis
     redis:
@@ -71,7 +72,7 @@ services:
         image: redis:latest
         networks: 
             - laravel-9
-        platform: linux/amd64
+              #platform: linux/amd64
 
 networks: 
     laravel-9:

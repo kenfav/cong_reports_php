@@ -26,7 +26,6 @@
 
     <p><label for="mes">Seleccione el mes: </label<br>
         <select name="mes" class="w3-select w3-border" required id="mes_id">
-          <option>Elegir el mes</option>
           <option value="1">enero</option>
           <option value="2">febrero</option>
           <option value="3">marzo</option>
