@@ -22,6 +22,7 @@ return new class extends Migration
       $table->integer('horas')->unsigned();
       $table->integer('revisitas')->unsigned()->nullable();
       $table->integer('estudios')->unsigned()->nullable();
+      $table->boolean('precursor_auxiliar')->default('0');
       $table->string('notas')->nullable();
       $table->timestamps();
       $table->foreignId('publicador_id')->references('id')->on('publicadors')->onDelete('cascade');

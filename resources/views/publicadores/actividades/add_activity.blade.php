@@ -60,6 +60,10 @@
 
         <label for="nombreform"> Notas: </label>
         <input class="w3-input w3-border" type="text" name="notas" id="notas_id" placeholder="Notas:" value="{{old('notas')}}"><br>
+
+        <label for="nombreform"> Precursor Auxiliar: </label>
+        <input class="w3-input w3-border" type="checkbox" name="precursor_auxiliar" id="precursor_auxiliar" value="1"><br>
+
         <div class="w3-container w3-center"><input class="w3-button w3-gray" type="submit" value="Confirmar"></div>
 
   </form>

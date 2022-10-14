@@ -39,12 +39,19 @@ class ActividadesController extends Controller
       'revisitas',
       'estudios',
       'notas',
-      'publicador_id'
+      'publicador_id',
+      'precursor_auxiliar'
     );
     Actividades::create($actividad);
     return redirect()->route('publicadores.index');
   }
-
+  public function listarPorPublicador($id)
+  {
+    if (!$publicador = Publicador::find($id))
+      return redirect()->route('publicadores.index');
+    $actividadesDelPublicador = Actividades::where("publicador_id", "=", "{$publicador->id}")->orderBy('ano')->orderBy('mes')->get();
+    dd($actividadesDelPublicador);
+  }
   public function update($actividad_id)
   {
     //

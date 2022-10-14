@@ -15,7 +15,7 @@
   <form action="{{ route('publicadores.delete', $publicador -> id)}}" method="POST">
     @csrf
     @method('DELETE')
-    <button type="submit">Deletar</button>
+    <button class="w3-button w3-gray" type="submit">Deletar</button>
   </form>
 </div>
 @endsection

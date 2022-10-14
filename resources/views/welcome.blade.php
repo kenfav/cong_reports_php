@@ -35,6 +35,8 @@
 
         <h4><a href="{{route('publicadores.create')}}"><button class="w3-button w3-block w3-gray w3-border">Crear publicador</button>
           </a></h4>
+        <h4><a href="{{route('resumen.index')}}"><button class="w3-button w3-block w3-gray w3-border">Resumen mensual</button>
+          </a></h4>
 
 
       </div>

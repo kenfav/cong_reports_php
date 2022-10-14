@@ -19,7 +19,7 @@ class PublicadorController extends Controller
   public function index(Request $request)
   {
     $busqueda = $request->buscarpublicador;
-    $publicadores = Publicador::where('nombre', 'LIKE', "%{$busqueda}%")->get();
+    $publicadores = Publicador::where('nombre', 'LIKE', "%{$busqueda}%")->orderBy('nombre')->get();
     return view('publicadores.index', compact('publicadores'));
   }
 
